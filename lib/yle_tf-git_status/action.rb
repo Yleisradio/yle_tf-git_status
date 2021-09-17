@@ -37,6 +37,7 @@ module YleTfPlugins
 
         # fetch git status, before yle_tf does chdir to tmpdir
         status = git_status
+        YleTf::Logger.debug("git status found #{status.length} files")
         @app.call(env)
         # report results after terraform has done exit
         report(status) if !status.empty?
